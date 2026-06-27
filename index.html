@@ -1,464 +1,697 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>SolBridge | 화학 기술의 다리</title>
+  <meta name="description" content="SolBridge는 연구용 특수화합물, 주문합성, 중간체, 펩타이드 프로젝트를 검토하고 공급 실행을 지원하는 기술 기반 화학 소싱 파트너입니다." />
+
+  <link rel="icon" href="/favicon.ico" />
+
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-	<link rel="icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+
   <style>
-    body {
-      font-family: 'Pretendard', system-ui, sans-serif;
-      letter-spacing: -0.01em;
-      line-height: 1.7;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .hero-bg {
-      background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)),
-      url('https://picsum.photos/id/1015/2000/1200') center/cover no-repeat;
+    body {
+      font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: -0.015em;
+      line-height: 1.7;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      background: #f8fafc;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    li {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    #services,
+    #expertise,
+    #about,
+    #contact-info {
+      scroll-margin-top: 96px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
     }
 
     .nav-bg {
-      background: rgba(30, 64, 175, 0.8);
-      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(16px);
     }
 
-    .accordion-content {
-      max-height: 0;
+    .hero-bg {
+      position: relative;
       overflow: hidden;
-      transition: max-height 0.4s ease;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(15, 23, 42, 0.92) 0%,
+          rgba(15, 23, 42, 0.76) 38%,
+          rgba(15, 23, 42, 0.42) 72%,
+          rgba(15, 23, 42, 0.30) 100%
+        ),
+        url("hero-bg.png") center center / cover no-repeat;
+    }
+
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 76% 34%, rgba(245, 158, 11, 0.20), transparent 30%),
+        radial-gradient(circle at 18% 24%, rgba(37, 99, 235, 0.18), transparent 34%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 80px rgba(2, 6, 23, 0.34);
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(15, 23, 42, 0.94) 0%,
+            rgba(15, 23, 42, 0.82) 50%,
+            rgba(15, 23, 42, 0.68) 100%
+          ),
+          url("hero-bg.png") 63% center / cover no-repeat;
+      }
     }
   </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800">
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full nav-bg border-b border-white/10 z-50">
-    <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+    <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 md:py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <img src="logo.png" alt="SolBridge Logo" class="h-10 w-auto">
-        <div class="text-3xl font-bold tracking-tighter text-white">SolBridge</div>
+        <img src="logo.png" alt="SolBridge Logo" class="h-9 md:h-10 w-auto" />
+        <div class="text-2xl md:text-3xl font-bold tracking-tighter text-white">
+          SolBridge
+        </div>
       </div>
 
-      <div class="hidden md:flex space-x-10 text-sm font-semibold text-white">
-        <a href="#services" class="hover:text-blue-200 transition">서비스</a>
-        <a href="#expertise" class="hover:text-blue-200 transition">전문 분야</a>
-        <a href="#about" class="hover:text-blue-200 transition">회사 소개</a>
-	<a href="#contact-info" class="hover:text-blue-200 transition">연락처</a>
-        
+      <div class="hidden md:flex space-x-10 text-sm font-semibold text-white/95">
+        <a href="#services" class="hover:text-amber-200 transition">서비스</a>
+        <a href="#expertise" class="hover:text-amber-200 transition">대응 분야</a>
+        <a href="#about" class="hover:text-amber-200 transition">회사 소개</a>
+        <a href="#contact-info" class="hover:text-amber-200 transition">문의</a>
       </div>
-
-      
     </div>
   </nav>
 
   <!-- Hero Section -->
-<section class="hero-bg min-h-screen flex items-center text-white">  
-  <div class="max-w-7xl mx-auto px-6 md:px-8 pt-20 pb-12">           
-    <div class="max-w-3xl">
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight tracking-tighter mb-6">
-        화학 원료 소싱 및<br>글로벌 공급 전문 기업
-      </h1>
-        <p class="text-sm text-blue-200 mt-4">
-          제약 · 소재 · 화학 기업을 위한 글로벌 소싱 파트너
-        </p>
-        <div class="flex gap-4 mt-10">
-          <a href="#services" 
-             class="px-9 py-4 bg-white text-slate-900 font-semibold rounded-2xl hover:bg-slate-100 transition">
-            서비스 알아보기
-          </a>
-         
+  <section class="hero-bg min-h-screen flex items-center text-white">
+    <div class="hero-content max-w-7xl mx-auto px-6 md:px-8 pt-28 pb-20 w-full">
+      <div class="grid lg:grid-cols-[1.12fr_0.88fr] gap-14 lg:gap-20 items-center">
+
+        <div class="max-w-3xl">
+          <p class="inline-flex items-center rounded-full border border-amber-200/25 bg-white/10 px-4 py-2 text-xs md:text-sm text-amber-100/90 mb-8">
+            Technical Chemical Sourcing Partner
+          </p>
+
+          <h1 class="text-[2.55rem] sm:text-5xl lg:text-6xl font-semibold leading-[1.08] tracking-tighter mb-7">
+            화학의 기회를<br />
+            연결하고 실행합니다
+          </h1>
+
+          <p class="text-xl md:text-2xl lg:text-[1.7rem] font-medium leading-relaxed mb-6 text-white/95">
+            연구용 특수화합물과 주문합성 프로젝트를<br class="hidden md:block" />
+            검토하고 공급으로 연결합니다.
+          </p>
+
+          <p class="text-sm md:text-base leading-relaxed text-white/78 mb-10 max-w-2xl">
+            제약 · 바이오 · 소재 기업을 위한 기술 기반 화학 소싱 파트너
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#services" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white text-slate-900 font-semibold hover:bg-amber-50 transition">
+              서비스 알아보기
+            </a>
+
+            <a href="#contact-info" class="inline-flex items-center justify-center px-8 py-4 rounded-2xl border border-white/25 text-white font-semibold hover:bg-white/10 transition">
+              프로젝트 문의
+            </a>
+          </div>
         </div>
+
+        <div class="glass-card rounded-[2rem] p-8 md:p-10">
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-sm text-amber-100/65 mb-1">RFQ Review</p>
+              <h3 class="text-2xl font-semibold text-white">
+                검토 기준
+              </h3>
+            </div>
+
+            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-slate-900 flex items-center justify-center text-2xl">
+              🧪
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+              <p class="text-xs text-amber-100/60 mb-1">01</p>
+              <p class="font-medium text-white">구조 · CAS · 물질명 확인</p>
+            </div>
+
+            <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+              <p class="text-xs text-amber-100/60 mb-1">02</p>
+              <p class="font-medium text-white">수량 · 순도 · 납기 조건 검토</p>
+            </div>
+
+            <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+              <p class="text-xs text-amber-100/60 mb-1">03</p>
+              <p class="font-medium text-white">품질자료 제공 범위 확인</p>
+            </div>
+
+            <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+              <p class="text-xs text-amber-100/60 mb-1">04</p>
+              <p class="font-medium text-white">공급 가능성과 견적 회신</p>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/15">
+            <p class="text-sm text-white/75">
+              일반 문의 기준, 평균 24시간 내 1차 검토 회신
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- 문제 제기 섹션 -->
-  <section class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-8 text-center">
-      <h2 class="text-4xl font-semibold mb-6 text-slate-900">
-        이런 문제, 겪고 계신가요?
-      </h2>
-      <div class="text-left max-w-2xl mx-auto text-slate-600 space-y-4 mb-12">
-        <p>• 중국 공급처를 찾았지만 신뢰가 가지 않는다</p>
-        <p>• 가격은 저렴한데 품질이 불안하다</p>
-        <p>• 샘플 이후 양산 연결이 어렵다</p>
-        <p>• 커스텀 합성 의뢰할 곳이 마땅치 않다</p>
-      </div>
-      <h3 class="text-2xl font-semibold mb-6">
-        SolBridge는 “연결”이 아니라 “실행”까지 책임집니다
-      </h3>
-      <div class="text-slate-600 space-y-3 mb-12">
-        <p>✔ 검증된 제조사만 연결</p>
-        <p>✔ 가격 협상 및 계약 지원</p>
-        <p>✔ 샘플 → 양산까지 전 과정 관리</p>
-        <p>✔ 빠른 의사결정 및 대응</p>
-      </div>
-      
-      <p class="text-sm text-slate-400 mt-4">
-        평균 24시간 내 1차 검토 회신
-      </p>
-    </div>
-  </section>
+  <!-- Project Review Section -->
+  <section class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-20 items-center">
 
-  <!-- Services Section -->
-  <!-- Services Section -->
-<section id="services" class="py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-semibold mb-4 text-slate-900">전문 서비스</h2>
-      <p class="text-slate-600 max-w-md mx-auto">클릭하시면 더 자세한 내용을 확인하실 수 있습니다</p>
-    </div>
-
-    <div class="space-y-6 max-w-4xl mx-auto">
-
-      <!-- 서비스 1: 화학제품 중개 -->
-      <div class="border border-slate-200 rounded-3xl overflow-hidden">
-        <details class="group">
-          <summary class="w-full px-10 py-8 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
-            <div class="flex items-center gap-6">
-              <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl">🔄</div>
-              <h3 class="text-2xl font-semibold">화학제품 중개</h3>
-            </div>
-            <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180"></i>
-          </summary>
-          <div class="px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
-            <p>
-              글로벌 공급망을 기반으로 경쟁력 있는 화학소재를 제공합니다.<br><br>
-              중국의 검증된 제조사 네트워크를 통해<br>
-              가격, 품질, 납기 측면에서 최적의 공급 솔루션을 제안합니다.
-            </p>
-            <ul class="mt-6 space-y-2">
-              <li>• 공급처 발굴 및 검증</li>
-              <li>• 가격 협상 및 계약 지원</li>
-              <li>• 품질 리스크 사전 검토</li>
-              <li>• 안정적 납기 관리</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- 서비스 2: Scale-up & Technical Sourcing -->
-      <div class="border border-slate-200 rounded-3xl overflow-hidden">
-        <details class="group">
-          <summary class="w-full px-10 py-8 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
-            <div class="flex items-center gap-6">
-              <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl">🔬</div>
-              <h3 class="text-2xl font-semibold">Scale-up & Technical Sourcing</h3>
-            </div>
-            <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180"></i>
-          </summary>
-          <div class="px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
-            <p>
-              연구개발 단계의 기술을 실제 생산으로 연결합니다.<br><br>
-              실험실 수준의 합성부터 파일럿 및 양산까지,<br>
-              적합한 파트너를 매칭하고 실행을 지원합니다.
-            </p>
-            <ul class="mt-6 space-y-2">
-              <li>• 합성 루트 검토 및 파트너 매칭</li>
-              <li>• 파일럿 생산 연계</li>
-              <li>• 공정 스케일업 지원</li>
-              <li>• 기술 기반 공급망 구축</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- 서비스 3: Custom Synthesis Sourcing -->
-      <div class="border border-slate-200 rounded-3xl overflow-hidden">
-        <details class="group">
-          <summary class="w-full px-10 py-8 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
-            <div class="flex items-center gap-6">
-              <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-3xl">🧪</div>
-              <h3 class="text-2xl font-semibold">Custom Synthesis Sourcing</h3>
-            </div>
-            <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180"></i>
-          </summary>
-          <div class="px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
-            <p>
-              특수 화합물 및 맞춤형 합성을 위한 최적의 파트너를 연결합니다.<br><br>
-              요구 스펙에 맞는 합성 가능 업체를 발굴하고,<br>
-              품질과 비용을 고려한 최적의 생산 경로를 제안합니다.
-            </p>
-            <ul class="mt-6 space-y-2">
-              <li>• 특수 화합물 합성 의뢰</li>
-              <li>• 다단계 유기합성 프로젝트 연결</li>
-              <li>• 소량 ~ 대량 생산 대응</li>
-              <li>• NDA 기반 프로젝트 관리</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-    </div>
-  </div>
-</section>
-<section id="expertise" class="py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-8">
-
-    <div class="text-center mb-16">
-      <h2 class="text-4xl font-semibold mb-4 text-slate-900">전문 분야</h2>
-      <p class="text-slate-600">
-        특정 분야에 제한되지 않고, 실제 거래와 실행 중심의 화학소재 솔루션을 제공합니다
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-
-      <!-- 1 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">정밀 화학 & 중간체</h3>
-        <p class="text-slate-600 text-sm">
-          제약, 소재, 기능성 화학 분야에서 사용되는 고순도 유기 화합물 및 중간체를
-          신속하게 소싱하고 안정적인 공급을 연결합니다.
-        </p>
-      </div>
-
-      <!-- 2 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">커스텀 합성 소싱</h3>
-        <p class="text-slate-600 text-sm">
-          특수 화합물 및 다단계 유기합성 프로젝트에 대해
-          요구 스펙에 맞는 최적의 합성 파트너를 발굴하고 연결합니다.
-        </p>
-      </div>
-
-      <!-- 3 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">글로벌 화학소재 소싱</h3>
-        <p class="text-slate-600 text-sm">
-          중국 기반의 제조사 네트워크를 활용하여
-          가격 경쟁력과 품질을 동시에 확보할 수 있는 공급망을 구축합니다.
-        </p>
-      </div>
-
-      <!-- 4 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">스케일업 & 생산 연결</h3>
-        <p class="text-slate-600 text-sm">
-          실험실 단계의 합성부터 파일럿 및 양산까지,
-          생산 가능한 파트너를 매칭하여 실제 공급으로 이어지도록 지원합니다.
-        </p>
-      </div>
-
-      <!-- 5 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">특수 화합물 공급</h3>
-        <p class="text-slate-600 text-sm">
-          일반 유통이 어려운 특수 화합물에 대해
-          대체 공급처 발굴 및 맞춤형 공급 솔루션을 제공합니다.
-        </p>
-      </div>
-
-      <!-- 6 -->
-      <div class="p-8 border border-slate-200 rounded-3xl hover:shadow-md transition">
-        <h3 class="text-xl font-semibold mb-4">리스크 관리</h3>
-        <p class="text-slate-600 text-sm">
-          품질, 납기, 가격 변동 등 거래 과정에서 발생할 수 있는 리스크를 사전에 검토하고 대응합니다.
-        </p>
-      </div>
-
-    </div>
-
-    <p class="text-center text-slate-500 mt-16">
-      단순한 연결이 아닌, 실제 거래와 실행까지 책임집니다
-    </p>
-
-  </div>
-</section>
-  <!-- About -->
-  <section id="about" class="py-28 bg-slate-100">
-    <div class="max-w-7xl mx-auto px-8">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <h2 class="text-4xl font-semibold mb-8 text-slate-900">회사 소개</h2>
-          <div class="border-l-4 border-blue-600 pl-6 space-y-6 text-slate-600 leading-relaxed text-lg">
+          <p class="text-blue-600 font-semibold mb-4">
+            Project Review
+          </p>
 
-  <p class="text-slate-900 font-semibold">
-    SolBridge는 중국 화학소재 공급망에 특화된 소싱 파트너입니다.
-  </p>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900 mb-6">
+            복잡한 화학 프로젝트,<br />
+            검토부터 실행까지
+          </h2>
 
-  <p>
-    의약품 원료(API), 정밀화학품, 전자재료 등 <br>
-다양한 분야에서 중국 현지 제조사 네트워크를 기반으로  
-    공급처 발굴, 가격 협상, 품질 검토, 거래 실행까지 전 과정을 직접 수행합니다.
-  </p>
+          <p class="text-base md:text-lg leading-relaxed text-slate-600 mb-8">
+            합성 가능성, 공급사 대응 수준, 분석자료, 납기 조건까지
+            SolBridge는 문의 단계에서부터 실행 가능한 공급 옵션을 검토합니다.
+          </p>
 
-  <p>
-    복잡한 소싱을 단순하게 만들고,  
-    고객이 가장 빠르게 원하는 제품을 확보할 수 있도록 지원합니다.
-  </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white border border-slate-200 rounded-2xl p-5">
+              <p class="text-2xl font-semibold text-slate-900">24h</p>
+              <p class="text-sm text-slate-500 mt-1">1차 검토 회신</p>
+            </div>
 
-</div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-5">
+              <p class="text-2xl font-semibold text-slate-900">RFQ</p>
+              <p class="text-sm text-slate-500 mt-1">구조 기반 검토</p>
+            </div>
+          </div>
         </div>
-       
-        <div class="bg-white rounded-3xl p-10 shadow-sm">
-          <h4 class="font-semibold text-xl mb-6">주요 강점</h4>
+
+        <div class="bg-white rounded-[2rem] border border-slate-200 shadow-sm p-8 md:p-10">
+          <div class="space-y-5 text-base md:text-lg text-slate-700">
+            <p>✔ 구조·수량·순도 기준의 1차 가능성 검토</p>
+            <p>✔ 프로젝트 조건에 맞는 공급사 확인 및 견적 조율</p>
+            <p>✔ HPLC, LC-MS, NMR 등 주요 분석자료 확인 지원</p>
+            <p>✔ 샘플·소량 합성부터 후속 공급까지 진행 관리</p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-200">
+            <p class="text-sm md:text-base font-medium text-slate-900">
+              단순한 공급처 연결이 아니라, 문의 검토부터 납기 확인까지 실무 중심으로 대응합니다.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid lg:grid-cols-[0.85fr_1.25fr] gap-12 lg:gap-20 items-start">
+
+        <div class="lg:sticky lg:top-32">
+          <p class="text-blue-600 font-semibold mb-4">
+            Services
+          </p>
+
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-6 text-slate-900">
+            서비스 범위
+          </h2>
+
+          <p class="text-slate-600 leading-relaxed mb-8">
+            연구용 특수화합물, 주문합성, 펩타이드, 중간체 프로젝트를
+            구조·수량·순도·납기 조건에 따라 검토하고 공급 실행을 지원합니다.
+          </p>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6">
+            <h3 class="font-semibold text-slate-900 mb-3">
+              검토 시 필요한 정보
+            </h3>
+
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>• 구조식, CAS No. 또는 물질명</li>
+              <li>• 요청 수량 및 목표 순도</li>
+              <li>• 희망 납기 및 분석자료 요구사항</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+
+          <div class="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm">
+            <details class="group">
+              <summary class="w-full px-8 md:px-10 py-7 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
+                <div class="flex items-center gap-5 md:gap-6">
+                  <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl shrink-0">🧪</div>
+                  <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-slate-900">Custom Synthesis / 주문합성</h3>
+                    <p class="text-sm text-slate-500 mt-1">신규 구조, 특수화합물, 다단계 유기합성 프로젝트 검토</p>
+                  </div>
+                </div>
+                <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180 ml-4"></i>
+              </summary>
+
+              <div class="px-8 md:px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
+                <p>
+                  고객이 요청한 구조와 요구 스펙을 기준으로 합성 가능성, 예상 난이도,
+                  공급 가능 수량, 납기 조건을 검토하고 적합한 공급 옵션을 확인합니다.
+                </p>
+                <ul class="mt-6 space-y-2">
+                  <li>• 구조, CAS, 수량, 순도 기준의 1차 가능성 검토</li>
+                  <li>• 공급사별 합성 가능성 및 견적 비교</li>
+                  <li>• 소량 합성부터 후속 공급 가능성 검토</li>
+                  <li>• NDA 필요 프로젝트 대응</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <div class="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm">
+            <details class="group">
+              <summary class="w-full px-8 md:px-10 py-7 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
+                <div class="flex items-center gap-5 md:gap-6">
+                  <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl shrink-0">🔬</div>
+                  <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-slate-900">Specialty Compounds & Intermediates</h3>
+                    <p class="text-sm text-slate-500 mt-1">특수화합물, 연구용 중간체, building block 공급 검토</p>
+                  </div>
+                </div>
+                <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180 ml-4"></i>
+              </summary>
+
+              <div class="px-8 md:px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
+                <p>
+                  일반 카탈로그에서 확보하기 어려운 연구용 화합물, 합성 중간체,
+                  building block, linker 등 프로젝트 목적에 맞는 공급 가능성을 검토합니다.
+                </p>
+                <ul class="mt-6 space-y-2">
+                  <li>• 연구용 특수화합물 및 중간체 소싱</li>
+                  <li>• chiral compound, isotope-labeled compound 등 구조 기반 검토</li>
+                  <li>• ADC/PROTAC 관련 linker 및 intermediate 검토</li>
+                  <li>• 요구 스펙에 따른 공급 가능성 및 납기 확인</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <div class="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm">
+            <details class="group">
+              <summary class="w-full px-8 md:px-10 py-7 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
+                <div class="flex items-center gap-5 md:gap-6">
+                  <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl shrink-0">🧬</div>
+                  <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-slate-900">Peptide Sourcing / 펩타이드</h3>
+                    <p class="text-sm text-slate-500 mt-1">연구용 및 Non-GMP 범위의 펩타이드 프로젝트 대응</p>
+                  </div>
+                </div>
+                <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180 ml-4"></i>
+              </summary>
+
+              <div class="px-8 md:px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
+                <p>
+                  펩타이드 서열, 수량, 순도, 염형, 변형 여부를 기준으로
+                  합성 가능성과 분석자료 제공 범위를 확인합니다.
+                </p>
+                <ul class="mt-6 space-y-2">
+                  <li>• linear, cyclic, modified peptide 검토</li>
+                  <li>• disulfide, PEGylation, lipidation 등 변형 펩타이드 확인</li>
+                  <li>• HPLC, LC-MS 등 기본 분석자료 확인 지원</li>
+                  <li>• Discovery 및 Non-GMP 단계 프로젝트 대응</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+          <div class="border border-slate-200 rounded-3xl overflow-hidden bg-white shadow-sm">
+            <details class="group">
+              <summary class="w-full px-8 md:px-10 py-7 flex justify-between items-center text-left hover:bg-slate-50 transition cursor-pointer list-none">
+                <div class="flex items-center gap-5 md:gap-6">
+                  <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center text-2xl shrink-0">📄</div>
+                  <div>
+                    <h3 class="text-xl md:text-2xl font-semibold text-slate-900">QC & Documentation / 품질자료 확인</h3>
+                    <p class="text-sm text-slate-500 mt-1">COA, HPLC, LC-MS, NMR 등 품질자료 확인 지원</p>
+                  </div>
+                </div>
+                <i class="fas fa-chevron-down text-slate-400 transition-transform group-open:rotate-180 ml-4"></i>
+              </summary>
+
+              <div class="px-8 md:px-10 pb-8 pt-2 text-slate-600 leading-relaxed">
+                <p>
+                  공급 전후로 필요한 분석자료와 품질문서를 확인하고,
+                  고객 요구 스펙에 맞는 자료 제공 가능 여부를 사전에 검토합니다.
+                </p>
+                <ul class="mt-6 space-y-2">
+                  <li>• COA, HPLC, LC-MS, NMR 등 분석자료 확인</li>
+                  <li>• 고객 요청 분석법 적용 가능 여부 검토</li>
+                  <li>• 순도, 구조확인, 불순물 관련 자료 확인 지원</li>
+                  <li>• 프로젝트별 필요 문서 제공 범위 확인</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section id="expertise" class="py-28 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-5 text-slate-900">
+          대응 분야
+        </h2>
+        <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          SolBridge는 연구개발 단계에서 필요한 특수화합물, 중간체, 펩타이드,
+          linker 및 관련 화합물의 공급 가능성을 프로젝트 조건에 따라 검토합니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">정밀화학 & 중간체</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            제약, 바이오, 소재 연구에 사용되는 연구용 중간체,
+            building block, 고순도 유기화합물의 공급 가능성을 검토합니다.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">주문합성 프로젝트</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            신규 구조, 특수 치환체, 다단계 유기합성 프로젝트에 대해
+            구조, 수량, 순도, 납기 기준으로 합성 가능성을 확인합니다.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">펩타이드</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            연구용 및 Non-GMP 단계의 linear peptide, cyclic peptide,
+            modified peptide 등에 대해 서열과 요구 스펙을 기준으로 검토합니다.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">ADC / PROTAC 관련 화합물</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            linker, payload intermediate, E3 ligand 관련 중간체 등은
+            구조와 요구 조건을 기준으로 대응 가능성을 확인합니다.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">Chiral & Isotope-labeled Compounds</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            키랄 화합물, 동위원소 표지 화합물 등 구조 해석과 스펙 확인이 중요한
+            특수 화합물에 대해 공급 가능성과 분석자료 범위를 검토합니다.
+          </p>
+        </div>
+
+        <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-md transition">
+          <h3 class="text-xl font-semibold mb-4 text-slate-900">품질자료 & 문서 확인</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            COA, HPLC, LC-MS, NMR 등 기본 분석자료와 고객 요청 문서의
+            제공 가능 여부를 프로젝트별로 확인합니다.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-center text-slate-500 mt-16 text-sm md:text-base">
+        단순한 공급처 연결을 넘어, 문의 검토부터 견적, 품질자료, 납기 확인까지 실무 중심으로 지원합니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-28 bg-slate-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <div>
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-8 text-slate-900">
+            회사 소개
+          </h2>
+
+          <div class="border-l-4 border-blue-600 pl-6 space-y-6 text-slate-600 leading-relaxed text-base md:text-lg">
+            <p class="text-slate-900 font-semibold">
+              SolBridge는 유기합성 실무 경험을 바탕으로 연구용 특수화합물,
+              주문합성, 중간체, 펩타이드 프로젝트를 검토하고 공급 실행을 지원하는
+              기술 기반 화학 소싱 파트너입니다.
+            </p>
+
+            <p>
+              고객의 구조, 수량, 순도, 납기 조건을 기준으로 합성 가능성과 공급 옵션을 검토하고,
+              프로젝트에 적합한 협력사를 확인하여 견적, 품질자료, 납기 커뮤니케이션까지
+              실무 중심으로 관리합니다.
+            </p>
+
+            <p>
+              단순히 공급처를 소개하는 데 그치지 않고,
+              문의 단계에서부터 실제 공급 가능성, 분석자료 제공 범위, 진행 리스크를 함께 확인하여
+              고객이 더 빠르고 안정적으로 의사결정할 수 있도록 돕습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200">
+          <h4 class="font-semibold text-xl mb-6 text-slate-900">
+            주요 강점
+          </h4>
+
           <ul class="space-y-6">
             <li class="flex gap-4">
               <span class="text-blue-600 font-medium">01</span>
               <div>
-                <div class="font-medium">광범위한 글로벌 네트워크</div>
-                <div class="text-slate-500 text-sm">국내외 화학 기업 및 연구소와의 탄탄한 파트너십</div>
+                <div class="font-medium text-slate-900">기술 기반 RFQ 검토</div>
+                <div class="text-slate-500 text-sm leading-relaxed">
+                  구조, 수량, 순도, 납기 조건을 기준으로 합성 가능성과 대응 방향을 검토합니다.
+                </div>
               </div>
             </li>
+
             <li class="flex gap-4">
               <span class="text-blue-600 font-medium">02</span>
               <div>
-                <div class="font-medium">과학 기반 실무 경험</div>
-                <div class="text-slate-500 text-sm">유기합성 전문가 팀이 직접 컨설팅 진행</div>
+                <div class="font-medium text-slate-900">프로젝트별 공급 옵션 확인</div>
+                <div class="text-slate-500 text-sm leading-relaxed">
+                  주문합성, 특수화합물, 중간체, 펩타이드 등 프로젝트 성격에 맞는 협력사를 확인합니다.
+                </div>
               </div>
             </li>
+
             <li class="flex gap-4">
               <span class="text-blue-600 font-medium">03</span>
               <div>
-                <div class="font-medium">고객 중심의 신속한 대응</div>
-                <div class="text-slate-500 text-sm">프로젝트별 맞춤형 솔루션 제공</div>
+                <div class="font-medium text-slate-900">품질자료와 납기 중심의 실무 관리</div>
+                <div class="text-slate-500 text-sm leading-relaxed">
+                  COA, HPLC, LC-MS, NMR 등 주요 분석자료와 납기 커뮤니케이션을 함께 확인합니다.
+                </div>
               </div>
             </li>
           </ul>
         </div>
+
       </div>
     </div>
   </section>
-<!-- 연락처 전용 섹션 -->
-<section id="contact-info" class="py-28 bg-slate-50">
-  <div class="max-w-5xl mx-auto px-8">
-    <div class="text-center mb-16">
-      <h2 class="text-5xl font-semibold mb-4 text-slate-900">연락처</h2>
-      <p class="text-xl text-slate-600">SolBridge와 함께하세요</p>
-    </div>
 
-    <div class="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-      
-      <!-- 왼쪽: 연락처 정보 -->
-      <div class="bg-white rounded-3xl p-10 shadow-sm">
-        <h3 class="text-2xl font-semibold mb-8 flex items-center gap-3">
-          <i class="fas fa-envelope text-blue-600"></i>
-          연락처 정보
-        </h3>
-        
-        <div class="space-y-8">
-          <div class="flex gap-5">
-            <div class="w-6 h-6 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mt-1">📧</div>
-            <div>
-              <div class="font-medium text-slate-700">이메일</div>
-              <a href="mailto:contact@solbridge.co" class="text-blue-600 hover:underline">contact@solbridge.co</a>
-            </div>
-          </div>
+  <!-- Contact Section -->
+  <section id="contact-info" class="py-28 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6 md:px-8">
 
-          <div class="flex gap-5">
-            <div class="w-6 h-6 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mt-1">📞</div>
-            <div>
-              <div class="font-medium text-slate-700">전화</div>
-              <a href="tel:010-3055-5333" class="text-blue-600 hover:underline">010-3055-5333</a>
-            </div>
-          </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight mb-5 text-slate-900">
+          프로젝트 문의
+        </h2>
 
-          <div class="flex gap-5">
-            <div class="w-6 h-6 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mt-1">📍</div>
-            <div>
-              <div class="font-medium text-slate-700">주소</div>
-              <p class="text-slate-600 leading-relaxed">
-                경기도 성남시 중원구 산성대로 202, 7층 701-A12호<br>
-                
-              </p>
-            </div>
-          </div>
-
-          <div class="flex gap-5">
-            <div class="w-6 h-6 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mt-1">🕒</div>
-            <div>
-              <div class="font-medium text-slate-700">영업시간</div>
-              <p class="text-slate-600">평일 09:00 ~ 18:00</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 오른쪽: 빠른 문의 -->
-      <div class="bg-white rounded-3xl p-10 shadow-sm">
-        <h3 class="text-2xl font-semibold mb-8">빠른 문의</h3>
-        <p class="text-slate-600 mb-8">
-          간단한 문의사항을 남겨주시면<br>
-          24시간 이내에 답변드리겠습니다.
+        <p class="text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          주문합성, 특수화합물, 중간체, 펩타이드 관련 문의를 보내주시면<br class="hidden md:block" />
+          구조·수량·순도·납기 조건을 기준으로 1차 검토 후 회신드립니다.
         </p>
-        
-        
-
-        <div class="mt-10 text-center">
-          
-          <a href="mailto:contact@solbridge.co.kr" 
-             class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mt-3">
-            <i class="fas fa-paper-plane"></i>
-            이메일로 문의하기
-          </a>
-        </div>
       </div>
 
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
+
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200">
+          <h3 class="text-xl md:text-2xl font-semibold mb-8 flex items-center gap-3 text-slate-900">
+            <i class="fas fa-envelope text-blue-600"></i>
+            연락처 정보
+          </h3>
+
+          <div class="space-y-7">
+            <div class="flex gap-5">
+              <div class="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">📧</div>
+              <div>
+                <div class="font-medium text-slate-700 mb-1">이메일</div>
+                <a href="mailto:contact@solbridge.co" class="text-blue-600 hover:underline">contact@solbridge.co</a>
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div class="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">📞</div>
+              <div>
+                <div class="font-medium text-slate-700 mb-1">전화</div>
+                <a href="tel:01030555333" class="text-blue-600 hover:underline">010-3055-5333</a>
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div class="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">📍</div>
+              <div>
+                <div class="font-medium text-slate-700 mb-1">사업장 주소</div>
+                <p class="text-slate-600 leading-relaxed">
+                  경기도 성남시 중원구 산성대로 202,<br />
+                  7층 701-A12호
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-5">
+              <div class="w-10 h-10 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0">🕒</div>
+              <div>
+                <div class="font-medium text-slate-700 mb-1">응대 시간</div>
+                <p class="text-slate-600">평일 09:00 ~ 18:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 md:p-10 shadow-sm border border-slate-200">
+          <h3 class="text-xl md:text-2xl font-semibold mb-6 text-slate-900">
+            RFQ 문의 시 포함하면 좋은 정보
+          </h3>
+
+          <p class="text-slate-600 leading-relaxed mb-8">
+            아래 정보를 함께 보내주시면 합성 가능성, 공급 옵션, 예상 납기 검토가 더 빠르게 진행됩니다.
+          </p>
+
+          <ul class="space-y-4 text-slate-600 leading-relaxed mb-10">
+            <li>• 구조식, CAS No. 또는 물질명</li>
+            <li>• 요청 수량 및 목표 순도</li>
+            <li>• 희망 납기 및 용도</li>
+            <li>• 필요한 분석자료: COA, HPLC, LC-MS, NMR 등</li>
+            <li>• 특이사항: 염형, 키랄, 동위원소 표지, 변형 펩타이드 등</li>
+          </ul>
+
+          <div class="pt-6 border-t border-slate-200">
+            <p class="text-sm text-slate-500 mb-5">
+              일반 문의 기준, 평균 24시간 내 1차 검토 회신
+            </p>
+
+            <a href="mailto:contact@solbridge.co?subject=RFQ%20Inquiry%20-%20SolBridge"
+               class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+              <i class="fas fa-paper-plane"></i>
+              이메일로 문의하기
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</section>
-  <!-- Contact -->
-  
+  </section>
+
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 py-12">
-    <div class="max-w-7xl mx-auto px-8 text-center text-sm">
-<div class="address">
-                        <ul>
-                            <li>
-                                <p>솔브릿지</p>
-                            </li>
-                            <li>
-                                <p>경기도 성남시 중원구 산성대로202, 7층 701-A12호</p>
-                            </li>
-                            <li>
-                                <p>Tel :  010-3055-5333</p><span></span><p>E-mail : contact@solbridge.co</p>
- 화학제품 중개 | 기술이전 컨설팅 | 커스텀 유기합성
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                
-      © 2026 SolBridge Consulting. All rights reserved.<br>
-     
+    <div class="max-w-7xl mx-auto px-6 md:px-8 text-sm">
+
+      <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-8">
+        <div class="text-center md:text-left">
+          <h3 class="text-white font-semibold text-lg mb-3">SolBridge</h3>
+          <p class="leading-relaxed">솔브릿지</p>
+          <p class="leading-relaxed mt-2">
+            경기도 성남시 중원구 산성대로 202,<br class="md:hidden" />
+            7층 701-A12호
+          </p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h4 class="text-white font-medium mb-3">Contact</h4>
+          <p>
+            Tel :
+            <a href="tel:01030555333" class="hover:text-white transition">010-3055-5333</a>
+          </p>
+          <p class="mt-1">
+            E-mail :
+            <a href="mailto:contact@solbridge.co" class="hover:text-white transition">contact@solbridge.co</a>
+          </p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h4 class="text-white font-medium mb-3">Service</h4>
+          <p class="leading-relaxed">주문합성 · 특수화합물 · 중간체 · 펩타이드</p>
+          <p class="leading-relaxed mt-1">품질자료 확인 · 프로젝트 공급 검토</p>
+        </div>
+      </div>
+
+      <div class="border-t border-slate-700 mt-10 pt-6 text-center text-xs text-slate-500">
+        © 2026 SolBridge. All rights reserved.
+      </div>
+
     </div>
   </footer>
 
-  <script>
-  function toggleAccordion(button) {
-    const content = button.nextElementSibling;
-    const icon = button.querySelector('i');
-    
-    // 이미 열려있는지 확인
-    const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-    // 모든 아코디언 먼저 닫기
-    document.querySelectorAll('.accordion-content').forEach(item => {
-      item.style.maxHeight = '0px';
-    });
-    document.querySelectorAll('button i').forEach(i => {
-      i.style.transform = 'rotate(0deg)';
-    });
-
-    // 클릭한 아코디언 열기
-    if (!isOpen) {
-      content.style.maxHeight = content.scrollHeight + "px";
-      icon.style.transform = 'rotate(180deg)';
-    }
-  }
-
-  // 모바일 터치 대응 강화 + 페이지 로드 후 초기화
-  document.addEventListener('DOMContentLoaded', function() {
-    const accordionButtons = document.querySelectorAll('.accordion-content').forEach(content => {
-      content.style.transition = 'max-height 0.4s ease';
-      content.style.overflow = 'hidden';
-    });
-  });
-</script>
 </body>
 </html>
